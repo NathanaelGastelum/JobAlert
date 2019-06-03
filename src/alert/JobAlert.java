@@ -14,21 +14,25 @@ public class JobAlert {
 		ChromeOptions options = new ChromeOptions();
 		options.setHeadless(true);
 		WebDriver driver = new ChromeDriver(options);
+
+		//Go to job page
 		driver.get("https://zwift.com/careers/");
 		driver.switchTo().frame("grnhse_iframe");
-		
+
 		// Find the QA job postings
-        List<WebElement> jobs = driver.findElements(By.partialLinkText("QA"));
-        
-        //Check number of new QA postings
-        System.out.println(jobs.size() + " Job Postings:"); //TODO add a condition for checking if the posting is new and in Long Beach
-		
-        //Print each job posting
-        for (int i=0; i<jobs.size();i++) {
-        	System.out.println(jobs.get(i).getText());
-        }
-        
-        //Close the browser
-        driver.quit();
+		List<WebElement> jobs = driver.findElements(By.partialLinkText("QA"));
+
+		//TODO add a condition for checking if the posting is new and in Long Beach
+
+		//Check number of QA postings
+		System.out.println(jobs.size() + " Job Postings:");
+
+		//Print each job posting
+		for (int i=0; i<jobs.size();i++) {
+			System.out.println(jobs.get(i).getText());
+		}
+
+		//Close the browser
+		driver.quit();
 	}
 }
